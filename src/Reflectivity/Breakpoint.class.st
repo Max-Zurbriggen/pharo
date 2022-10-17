@@ -461,13 +461,13 @@ Breakpoint >> remove [
 
 { #category : #removing }
 Breakpoint >> removeFromBreakpointGroups [
+
+	"code needed when breakpoints are not correctly removed by the garbagecollector"
+	self group removeBreakpoint: self.
+	BreakpointGroup allBreakpointsGroup removeBreakpoint: self.
+
 	"just in case the breakpoint is not removed correctly this will remove the reference to the group"
  	group := nil.
-	
-	"old code needed when groups are not using weak sets"
-	"self group removeBreakpoint: self.
-	BreakpointGroup allBreakpointsGroup removeBreakpoint: self."
-
 ]
 
 { #category : #removing }

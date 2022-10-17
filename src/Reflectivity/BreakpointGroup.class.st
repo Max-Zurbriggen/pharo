@@ -75,6 +75,12 @@ BreakpointGroup >> breakpoints [
 	^breakpoints ifNil: [ breakpoints := WeakSet new]
 ]
 
+{ #category : #API }
+BreakpointGroup >> enable: aBoolean [
+	"enables/disables all breakpoints in this group"
+	self breakpoints do: [ :bp | bp enabled: aBoolean ]
+]
+
 { #category : #initialization }
 BreakpointGroup >> initialize [ 
 	AllGroups add: self.
